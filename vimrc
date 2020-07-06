@@ -1,3 +1,9 @@
+call plug#begin('~/.vim/plugged')
+Plug 'inkarkat/vim-mark'
+Plug 'vim-airline/vim-airline'
+# taglist需要ctags
+Plug 'vim-scripts/taglist.vim'
+call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 显示相关
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
