@@ -26,3 +26,9 @@ keybindings.json中配置
     }
 ]
 ```
+
+### 关闭预览模式
+
+预览模式即打开新的文件会覆盖当前文件，不会另开新页面。
+
+enablePreivew:false
