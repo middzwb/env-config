@@ -32,3 +32,7 @@ keybindings.json中配置
 预览模式即打开新的文件会覆盖当前文件，不会另开新页面。
 
 enablePreivew:false
+
+### cursor blinking
+
+关闭光标闪烁
