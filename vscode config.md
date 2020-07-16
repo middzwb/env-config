@@ -36,3 +36,7 @@ enablePreivew:false
 ### cursor blinking
 
 关闭光标闪烁
+
+## 快捷键
+
+shift + f12 查看调用该函数的引用
