@@ -1,6 +1,8 @@
 # linux
 
-## zsh
+## config 
+
+### zsh
 
 ### ohmyzsh
 
@@ -19,8 +21,16 @@ windows所需字体： git clone https://github.com/powerline/fonts.git --depth=
 
 设置 terminal font： DejaVu Sans Mono for Powerline
 
-## tmux
+### tmux
 
 ### 插件
 
 * tmux-resurrect
+
+## command
+
+### tcpdump
+
+* 抓http包 tcpdump -i any -s 0 'tcp port http' -w /tmp/http.cap
+
+`-i`指定网卡
