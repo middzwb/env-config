@@ -62,4 +62,14 @@ shift + f12 查看调用该函数的引用
     "remote.SSH.path": "D:\\software\\Git\\usr\\bin\\ssh.exe",
 ```
 
-remote ssh设置： 用win10自带的ssh会出现Bad owner or permissions on C:\\Users\\xxx/.ssh/config, 将ssh换成git带的后解决该问题
+remote ssh设置： 用win10自带的ssh会出现Bad owner or permissions on C:\\Users\\xxx/.ssh/config, 将ssh换成git带的后解决该问题；
+
+remote ssh go无法跳转，没有代码提示，如下修改remote节点的设置，然后就可以了，并且跳转和提示速度比remote-wsl快多了。应该是云主机的内存和cpu比较大
+
+```json
+    "go.useLanguageServer": true,
+    "go.alternateTools": {
+        "go-langserver": "gopls"
+    },
+    "go.docsTool": "guru
+```
