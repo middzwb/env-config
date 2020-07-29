@@ -40,3 +40,26 @@ enablePreivew:false
 ## 快捷键
 
 shift + f12 查看调用该函数的引用
+
+在vim插件中自定义快捷键(vscode自定义快捷键的when实在是找不到哪个是非编辑模式)
+
+```json
+// settings.json
+    // nmap
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<leader>","m"],
+            "commands": [
+                "highlightwords.addHighlight"   // 一个类似于mark.vim的单词高亮插件
+            ]
+        }
+    ],
+    
+    // remote ssh
+    "remote.SSH.remotePlatform": {
+        "$remote_server_name": "linux",
+    },
+    "remote.SSH.path": "D:\\software\\Git\\usr\\bin\\ssh.exe",
+```
+
+remote ssh设置： 用win10自带的ssh会出现Bad owner or permissions on C:\\Users\\xxx/.ssh/config, 将ssh换成git带的后解决该问题
