@@ -1,12 +1,13 @@
 call plug#begin('~/.vim/plugged')
-Plug 'inkarkat/vim-mark'
+"Plug 'inkarkat/vim-mark'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-scripts/taglist.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'dense-analysis/ale'
 Plug 'vim-scripts/a.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go'
+Plug 'majutsushi/tagbar'
 call plug#end()
 
 "winpos 5 5          " 设定窗口位置
@@ -47,7 +48,7 @@ set shiftwidth=4
 set smarttab " 在行和段开始处使用制表符
 set autoread " 设置当文件被改动时自动载入
 autocmd FileType c,cpp,cc map <buffer> <leader><space> :w<cr>:make<cr> " quickfix模式
-set completeopt=preview,menu "代码补全
+set completeopt=longest,menu "代码补全  "set completeopt=preview,menu preview会弹出预览窗口
 filetype plugin on "允许插件
 set clipboard+=unnamed "共享剪贴板
 :set makeprg=g++\ -Wall\ \ % "make 运行
@@ -112,8 +113,7 @@ endfunction
 
 " plugin
 
-" tag list的设定
-""autocmd FileType java set tags+=D:\tools\java\tags
+" tag list  #######################################################################
 "autocmd FileType h,cpp,cc,c set tags+=D:\tools\cpp\tags
 autocmd BufReadPost * if line("'\"")>0&&line("'\"")<=line("$") | exe "normal g'\"" | endif
 ""set tags=/home/z19052/ceph-L/src/tags
@@ -122,24 +122,25 @@ let Tlist_Show_One_File=1 "不同时显示多个文件的tag，只显示当前�
 let Tlist_Exit_OnlyWindow=1 "如果taglist窗口是最后一个窗口，则退出vim
 let Tlist_Ctags_Cmd="/usr/bin/ctags"
 
-" indent guides
+" indent guides  #######################################################################
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 0
 let g:indent_guides_tab_guides = 0
 colorscheme desert
 
-" airline
+" airline  #######################################################################
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+"let g:airline#extensions#tabline#buffer_idx_mode = 1
 ""let g:airline#extensions#tabline#show_splits = 1
 ""let g:airline#extensions#tabline#show_buffers = 1
 ""let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 
-let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#enabled = 1 " git enable
 
 let g:airline#extensions#whitespace#enabled = 0
 
@@ -156,10 +157,13 @@ let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
 
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+
 set t_Co=256
 set cc=120
 
-" cpp enhance
+" cpp enhance  #######################################################################
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
@@ -173,13 +177,13 @@ hi Search term=standout ctermfg=0 ctermbg=3 guifg=Black guibg=Yellow
 let g:indentLine_enables = 1
 ""let g:indentLine_char="|"
 
-" ale
+" ale  #######################################################################
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
             \   'csh': ['shell'],
             \   'zsh': ['shell'],
             \   'bash': ['shellcheck'],
-            \   'go': ['gofmt', 'golint'],
+            \   'go': ['golint', 'gofmt'],
             \   'python': ['flake8', 'mypy', 'pylint'],
             \   'c': ['gcc', 'cppcheck', 'clang'],
             \   'cpp': ['gcc', 'cppcheck'],
@@ -190,9 +194,11 @@ let g:ale_lint_delay = 500
 let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++17'
 "let g:ale_sign_column_always = 1
+"let g:ale_sign_error = "✗"
 let g:ale_sign_error = ">>"
-let g:ale_sign_warning = '--'
+let g:ale_sign_warning = '⚡'
 hi! clear SpellBad
 hi! clear SpellCap
 hi! clear SpellRare
@@ -224,12 +230,41 @@ inoremap <M-j> <Down>
 inoremap <M-k> <Up>
 inoremap <M-h> <left>
 inoremap <M-l> <Right>
-nnoremap <F6> :Tlist<cr> <C-W>w
+nnoremap <F6> :TagbarToggle<CR>
+nnoremap <S-tab> :bn<CR>
 nnoremap m ]c
 nnoremap <S-m> [c
+nnoremap <C-j> <C-w>j
+nnoremap <C-h> <C-w>h
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 ""nnoremap <S-tab> :bn<CR>
 ""set mouse=a
 highlight Pmenu ctermbg=darkgrey ctermfg=black
 highlight PmenuSel ctermbg=lightgrey ctermfg=black
 
+" tabnine
 set rtp+=~/tabnine-vim
+
+" tagbar  #######################################################################
+let g:tagbar_left = 1 "让tagbar在页面左侧显示，默认右边
+let g:tagbar_width = 30 "设置tagbar的宽度为30列，默认40
+"let g:tagbar_autofocus = 1 "这是tagbar一打开，光标即在tagbar页面内，默认在vim打开的文件内
+let g:tagbar_sort = 0 "设置标签不排序，默认排序
+autocmd Filetype go,cpp,cc,c,h call tagbar#autoopen()
+
+" vim-go  #######################################################################
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_generate_tags = 1
+let g:go_fmt_command = "goimports" " 格式化将默认的 gofmt 替换
+let g:go_gopls_enabled = 1
+""let g:go_def_mode = 'gopls'
+""let g:go_info_mode='gopls'
+"autocmd Filetype go imap <F2> <C-x><C-o>
+autocmd Filetype go imap . .<C-x><C-o>
