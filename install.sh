@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 VIMRC=~/.vimrc
 TMUXCONF=~/.tmux.conf
 TMPERROR=/tmp/.tmp_conf_install.log
