@@ -4,7 +4,9 @@ personal issue
 
 ## install
 
+```bash
 sh -c "$(curl -fsS https://raw.githubusercontent.com/middzwb/personal_z/master/install.sh)"
+```
 
 注：如果出现443错误，在/etc/hosts中添加`199.232.68.133 raw.githubusercontent.com`。（通过 https://www.ipaddress.com/ 获取域名对应地址）
 
