@@ -56,6 +56,11 @@ curl -fsS -o $VIMRC https://raw.githubusercontent.com/middzwb/personal_z/master/
 error $?
 echo "${GREEN}Cloning vimrc end${RESET}"
 
+echo "${GREEN}Cloning tmux config...${RESET}"
+curl -fsS -o $TMUXCONF https://raw.githubusercontent.com/middzwb/personal_z/master/tmux.conf 1>/dev/null 2>$TMPERROR
+error $?
+echo "${GREEN}Cloning tmux config end${RESET}
+
 # vim-plug install
 echo "${GREEN}Cloning vim-plug...${RESET}"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 1>/dev/null 2>$TMPERROR
