@@ -1,5 +1,6 @@
 # personal_z
-my config
+
+personal config
 
 
 ## install
