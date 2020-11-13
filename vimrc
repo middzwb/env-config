@@ -8,6 +8,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
+Plug 'Yggdroot/LeaderF'
 call plug#end()
 
 "winpos 5 5          " 设定窗口位置
@@ -159,6 +160,11 @@ let g:airline_symbols.dirty='⚡'
 
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
 
 set t_Co=256
 set cc=120
@@ -211,7 +217,7 @@ hi! SpellRare gui=undercurl guisp=magenta
 
 " shortcut
 nmap <leader>w :w!<cr>
-nmap <leader>f :find<cr>
+"nmap <leader>f :find<cr>
 
 ""nnoremap <F2> :g/^\s*$/d<CR> "去空行
 "比较文件
@@ -268,3 +274,7 @@ let g:go_gopls_enabled = 1
 ""let g:go_info_mode='gopls'
 "autocmd Filetype go imap <F2> <C-x><C-o>
 autocmd Filetype go imap . .<C-x><C-o>
+
+" leaderf ###############################################################################
+let g:Lf_StlColorscheme = 'powerline'
+nnoremap <leader>p :LeaderfBufTag<CR>
