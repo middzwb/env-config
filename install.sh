@@ -52,12 +52,12 @@ if [ -f "$TMUXCONF" ]; then
 fi
 
 echo "${GREEN}Cloning vimrc...${RESET}"
-curl -fsS -o $VIMRC https://raw.githubusercontent.com/middzwb/personal_z/master/vimrc 1>/dev/null 2>$TMPERROR
+curl -fsS -o $VIMRC https://raw.githubusercontent.com/middzwb/my-config/master/vimrc 1>/dev/null 2>$TMPERROR
 error $?
 echo "${GREEN}Cloning vimrc end${RESET}"
 
 echo "${GREEN}Cloning tmux config...${RESET}"
-curl -fsS -o $TMUXCONF https://raw.githubusercontent.com/middzwb/personal_z/master/tmux.conf 1>/dev/null 2>$TMPERROR
+curl -fsS -o $TMUXCONF https://raw.githubusercontent.com/middzwb/my-config/master/tmux.conf 1>/dev/null 2>$TMPERROR
 error $?
 echo "${GREEN}Cloning tmux config end${RESET}"
 

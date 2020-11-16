@@ -3,7 +3,7 @@
 ## install vimrc + tmux.conf
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/middzwb/personal_z/master/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/middzwb/my-config/master/install.sh)"
 ```
 
 #### Error 443
