@@ -9,6 +9,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/LeaderF'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 "winpos 5 5          " 设定窗口位置
@@ -95,22 +96,22 @@ set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离
 au BufRead,BufNewFile *  setfiletype txt
 
 "自动补全
-inoremap ( ()<ESC>i
-:inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap { {<CR>}<ESC>O
-""inoremap { {}<ESC>i
-:inoremap } <c-r>=ClosePair('}')<CR>
-inoremap [ []<ESC>i
-:inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap " ""<ESC>i
-inoremap ' ''<ESC>i
-function! ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endfunction
+"inoremap ( ()<ESC>i
+":inoremap ) <c-r>=ClosePair(')')<CR>
+"inoremap { {<CR>}<ESC>O
+"""inoremap { {}<ESC>i
+":inoremap } <c-r>=ClosePair('}')<CR>
+"inoremap [ []<ESC>i
+":inoremap ] <c-r>=ClosePair(']')<CR>
+"inoremap " ""<ESC>i
+"inoremap ' ''<ESC>i
+"function! ClosePair(char)
+"    if getline('.')[col('.') - 1] == a:char
+"        return "\<Right>"
+"    else
+"        return a:char
+"    endif
+"endfunction
 
 " plugin
 
