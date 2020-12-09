@@ -20,7 +20,7 @@ syntax on
 ""set listchars=tab:>-,trail:-
 set nu              " 显示行号
 set go=             " 不要图形按钮
-set guifont=DejaVu_Sans_Mono:h12:cANSI   " 设置字体
+set guifont=DejaVu_Sans_Mono_for_powerline:h12:cANSI   " 设置windows字体
 ""autocmd InsertLeave * se nocul  " 离开插入模式后，取消下划线
 autocmd InsertEnter * se cul    " 用浅色高亮当前行
 set showcmd         " 输入的命令显示出来，看的清楚些
