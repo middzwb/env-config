@@ -34,7 +34,7 @@
             // Put settings here that you want to apply to all profiles.
             "acrylicOpacity" : 0.1,
             "closeOnExit" : true,
-            "colorScheme" : "Campbell",
+            "colorScheme" : "Campbell", // Campbell
             //"commandline" : "D:\\software\\Git\\bin\\bash.exe",
             "cursorColor" : "#00FF00",
             "cursorShape" : "filledBox",
@@ -49,7 +49,7 @@
             "snapOnInput" : true,
             "startingDirectory" : "%USERPROFILE%",
             //"useAcrylic" : true,
-            "backgroundImage" : "D:\\code\\56199491_p0.jpg",//86083338_p0.jpg",
+            "backgroundImage" : "D:\\code\\53756511_p0.jpg",//86083338_p0.jpg",56199491_p0.jpg 86142125_p0.png 77239904_p0.jpg 53756511_p0.jpg
             "backgroundImageOpacity" : 0.2,
             "suppressApplicationTitle" : true
         },
@@ -73,7 +73,9 @@
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "hidden": false,
                 "name": "Ubuntu-20.04",
-                "source": "Windows.Terminal.Wsl"
+                "source": "Windows.Terminal.Wsl",
+                "backgroundImage": "D:\\code\\54089221_p0.jpg", //86083338_p0.jpg",56199491_p0.jpg 86142125_p0.png 77239904_p0.jpg 53756511_p0.jpg
+                "backgroundImageOpacity": 0.2
             },
             {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
