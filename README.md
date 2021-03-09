@@ -31,5 +31,5 @@ git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$H
 ### plugin
 
 ```bash
-git clone https://github.com/tmux-plugins/tmux-resurrect ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tmux-resurrect ~/.tmux/plugins/tmux-resurrect
 ```
