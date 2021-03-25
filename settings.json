@@ -1,0 +1,74 @@
+{
+    "workbench.colorTheme": "Nebula",
+    "editor.wordWrap": "on",
+    "editor.rulers": [
+        120
+    ],
+    "editor.fontFamily": "DejaVu Sans Mono",
+    "tabnine.experimentalAutoImports": true,
+    "editor.minimap.maxColumn": 60,
+    "debug.console.fontFamily": "DejaVu Sans Mono for Powerline",
+    "terminal.integrated.fontFamily": "DejaVuSansMono NF",
+    "go.formatTool": "goimports",
+    "window.zoomLevel": 0,
+    "vim.highlightedyank.enable": true,
+    "vim.useSystemClipboard": true,
+    "workbench.editor.enablePreview": false,
+    "workbench.colorCustomizations": {
+        //"editor.selectionHighlightBackground": "#00aeff"
+    },
+    "vim.hlsearch": true,
+    "vim.searchHighlightColor": "#ADFF2F",
+    "editor.cursorBlinking": "solid",
+    "C_Cpp.updateChannel": "Insiders",
+    "remote.SSH.remotePlatform": {
+        "$remote_server_name": "linux",
+        "ucloud": "linux",
+        "code": "linux",
+        "u2fs": "linux",
+        "goofys": "linux",
+        "ipfs": "linux"
+    },
+    "remote.SSH.path": "D:\\software\\Git\\usr\\bin\\ssh.exe",
+    "vim.insertModeKeyBindings": [
+    
+    ],
+    "vim.normalModeKeyBindings": [
+
+        {
+            "before": ["<leader>","m"],
+            "commands": [
+                "highlightwords.addHighlight"
+            ]
+        },
+        {
+            "before": ["<leader>","]"],
+            "commands": [
+                "editor.action.peekDefinition"
+            ]
+        }
+    ],
+    "go.docsTool": "guru",
+    "workbench.iconTheme": "vscode-icons",
+    "background.enabled": false,
+    "go.lintFlags": [
+        "--disable-all"
+    ],
+    "todo-tree.tree.showScanModeButton": true,
+    "todo-tree.highlights.enabled": false,
+    "editor.mouseWheelZoom": true,
+    "editor.fontSize": 15,
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]"
+    ],
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+    "codespaces.accountProvider": "Uninitialized",
+    "update.mode": "manual",
+    "go.toolsManagement.autoUpdate": true
+}
