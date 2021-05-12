@@ -1,14 +1,18 @@
-# my config
+# config
 
-## install vimrc + tmux.conf
+## install vimrc tmux.conf
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/middzwb/my-config/master/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/middzwb/my-config/master/install.sh)" -s -to
 ```
 
 #### Error 443
 
+[github520](https://github.com/521xueweihan/GitHub520)
+
+<!--
 在/etc/hosts中添加`199.232.68.133 raw.githubusercontent.com`。（通过 https://www.ipaddress.com/ 获取域名对应地址）
+-->
 
 ## oh-my-zsh
 
