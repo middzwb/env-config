@@ -7,7 +7,7 @@ Plug 'vim-scripts/a.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/LeaderF'
 Plug 'jiangmiao/auto-pairs'
 call plug#end()
@@ -254,11 +254,11 @@ highlight PmenuSel ctermbg=lightgrey ctermfg=black
 set rtp+=~/tabnine-vim
 
 " tagbar  #######################################################################
-let g:tagbar_left = 1 "让tagbar在页面左侧显示，默认右边
-let g:tagbar_width = 30 "设置tagbar的宽度为30列，默认40
-"let g:tagbar_autofocus = 1 "这是tagbar一打开，光标即在tagbar页面内，默认在vim打开的文件内
-let g:tagbar_sort = 0 "设置标签不排序，默认排序
-autocmd Filetype go,cpp,cc,c,h call tagbar#autoopen()
+"let g:tagbar_left = 1 "让tagbar在页面左侧显示，默认右边
+"let g:tagbar_width = 30 "设置tagbar的宽度为30列，默认40
+""let g:tagbar_autofocus = 1 "这是tagbar一打开，光标即在tagbar页面内，默认在vim打开的文件内
+"let g:tagbar_sort = 0 "设置标签不排序，默认排序
+"autocmd Filetype go,cpp,cc,c,h call tagbar#autoopen()
 
 " vim-go  #######################################################################
 let g:go_highlight_types = 1
@@ -274,7 +274,7 @@ let g:go_gopls_enabled = 1
 ""let g:go_def_mode = 'gopls'
 ""let g:go_info_mode='gopls'
 "autocmd Filetype go imap <F2> <C-x><C-o>
-autocmd Filetype go imap . .<C-x><C-o>
+"autocmd Filetype go imap . .<C-x><C-o>
 
 " leaderf ###############################################################################
 let g:Lf_StlColorscheme = 'powerline'
