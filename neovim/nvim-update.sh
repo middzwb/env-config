@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# https://github.com/nvim-treesitter/nvim-treesitter/issues/700
+
 cd ~
 sudo rm -r neovim
 git clone https://github.com/neovim/neovim
