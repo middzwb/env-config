@@ -1,33 +1,77 @@
+" ########### PLUGIN-LIST BEGIN ###########
 call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'octol/vim-cpp-enhanced-highlight'
-""Plug 'dense-analysis/ale'
-Plug 'Yggdroot/indentLine'
-Plug 'tpope/vim-fugitive'
-Plug 'jiangmiao/auto-pairs'
-Plug 'luochen1990/rainbow'
+
+" 代码补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" 状态栏
+" Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
+" buffer栏
+Plug 'mengelbrecht/lightline-bufferline'
+" c++语法检查
+" Plug 'dense-analysis/ale'
+" 对齐线
+Plug 'Yggdroot/indentLine'
+" git
+Plug 'tpope/vim-fugitive'
+" 自动括号
+Plug 'jiangmiao/auto-pairs'
+" 🌈括号
+if has('nvim')
+    Plug 'p00f/nvim-ts-rainbow'
+else
+    Plug 'luochen1990/rainbow'
+endif
+" 多光标
+Plug 'mg979/vim-visual-multi'
+" 对齐
+Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', '<Plug>(EasyAlign)']}
+" 悬浮终端
+Plug 'voldikss/vim-floaterm', {'on': ['FloatermNew', 'FloatermToggle']}
+
+if has('nvim')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " text object
+    " Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    " refactor
+    " Plug 'nvim-treesitter/nvim-treesitter-refactor'
+    " context
+    " Plug 'romgrk/nvim-treesitter-context'
+else
+    Plug 'octol/vim-cpp-enhanced-highlight'
+endif
+
+" 查看启动时间
+Plug 'dstein64/vim-startuptime', {'on':'StartupTime'}
+
+" coc插件
+let g:coc_global_extensions = [
+    \ 'coc-vimlsp',
+    \ 'coc-xml',
+    \ 'coc-yank',
+    \ 'coc-sh',
+    \ 'coc-yaml',
+    \ 'coc-cmake',
+    \ 'coc-snippets',
+    \ 'coc-clangd',
+    \ 'coc-json',
+    \ 'coc-lists',
+    \ 'coc-word',
+    \ 'coc-sh',
+    \ 'coc-just-complete'
+    \ ]
+
 call plug#end()
+" ########### PLUGIN-LIST END ###########
+
+" ########### BASE-CONFIG ###########
 
 syntax enable
 syntax on
-""set list
-""set listchars=tab:>-,trail:-
-set nu              " 显示行号
-set go=             " 不要图形按钮
+set nu
 set guifont=DejaVu_Sans_Mono:h12:cANSI   " 设置字体
-""autocmd InsertLeave * se nocul  " 离开插入模式后，取消下划线
-autocmd InsertEnter * se cul    " 用浅色高亮当前行
-set showcmd         " 输入的命令显示出来，看的清楚些
-set cmdheight=2 " 命令行（在状态行下）的高度，默认为1，这里是2
-set novisualbell    " 不要闪烁(不明白)
-""set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容
 set laststatus=2    " 启动显示状态行(1),总是显示状态行(2)
-set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
-if version >= 603 " 显示中文帮助
-    set helplang=cn
-    set encoding=utf-8
-endif
+set nocompatible
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
@@ -44,18 +88,13 @@ set softtabstop=4 " 统一缩进为4
 set shiftwidth=4
 set smarttab " 在行和段开始处使用制表符
 set autoread " 设置当文件被改动时自动载入
-"autocmd FileType c,cpp,cc map <buffer> <leader><space> :w<cr>:make<cr> " quickfix模式
 set completeopt=longest,menu "代码补全  "set completeopt=preview,menu preview会弹出预览窗口
 filetype plugin on "允许插件
 set clipboard+=unnamed "共享剪贴板
-:set makeprg=g++\ -Wall\ \ % "make 运行
 set autowrite "自动保存
 set ruler                   " 打开状态栏标尺
 set cursorline              " 突出显示当前行
 set magic                   " 设置魔术
-set guioptions-=T           " 隐藏工具栏
-set guioptions-=m           " 隐藏菜单栏
-set noeb " 去掉输入错误的提示声音
 set confirm " 在处理未保存或只读文件的时候，弹出确认
 set history=1000 " 历史记录数
 set nobackup "禁止生成临时文件
@@ -64,9 +103,6 @@ set ignorecase "搜索忽略大小写
 set hlsearch "搜索逐字符高亮
 set incsearch
 set gdefault "行内替换
-set enc=utf-8 "编码设置
-set langmenu=zh_CN.UTF-8 "语言设置
-set helplang=cn
 filetype on " 侦测文件类型
 filetype plugin on " 载入文件类型插件
 filetype indent on " 为特定文件类型载入相关缩进文件
@@ -80,23 +116,49 @@ set mouse=a
 " 通过使用: commands命令，告诉我们文件的哪一行被改变过
 set report=0
 set fillchars=vert:\ ,stl:\ ,stlnc:\ " 在被分割的窗口间显示空白，便于阅读
-""set showmatch " 高亮显示匹配的括号
-" 匹配括号高亮的时间（单位是十分之一秒）
-"set matchtime=1
 set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离
-" 高亮显示普通txt文件（需要txt.vim脚本）
-au BufRead,BufNewFile *  setfiletype txt
 
-" plugin
+set t_Co=256
+set cc=120
+colorscheme desert
+hi Search term=standout ctermfg=0 ctermbg=3 guifg=Black guibg=Yellow
 
+""set foldmethod=indent
+""set nofoldenable
+""set list
+""set listchars=tab:>-,trail:-
+
+" ########### BASE-CONFIG END ###########
+
+" ########### SHORTCUT BEGIN ###########
+nnoremap <F3> <C-W>w
+set pastetoggle=<F4>
+inoremap <M-j> <Down>
+inoremap <M-k> <Up>
+inoremap <M-h> <left>
+inoremap <M-l> <Right>
+nnoremap <F6> :TagbarToggle<CR>
+nnoremap <S-tab> :bn<CR>
+nnoremap m ]c
+nnoremap <S-m> [c
+nnoremap <C-j> <C-w>j
+nnoremap <C-h> <C-w>h
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" ########### SHORTCUT END ###########
+
+" ########### PLUGIN BEGIN ###########
+
+" ########### indentLine BEGIN ###########
 " indent guides  #######################################################################
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 0
 let g:indent_guides_tab_guides = 0
-colorscheme desert
+" ########### indentLine END ###########
 
-" airline  #######################################################################
+" ########### airline BEGIN ###########
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -131,25 +193,24 @@ nmap <leader>4 <Plug>AirlineSelectTab4
 nmap <leader>5 <Plug>AirlineSelectTab5
 nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
+" ########### airline BEGIN ###########
 
-set t_Co=256
-set cc=120
-
-" cpp enhance  #######################################################################
+" ########### cpp-enhanced BEGIN ###########
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_posix_standard = 1
 let g:cpp_concepts_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
+" ########### cpp-enhanced END ###########
 
-hi Search term=standout ctermfg=0 ctermbg=3 guifg=Black guibg=Yellow
 
-" indent line
+" ########### indentLine BEGIN ###########
 let g:indentLine_enables = 1
 ""let g:indentLine_char="|"
+" ########### indentLine END ###########
 
-" ale  #######################################################################
+" ########### ale BEGIN ###########
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
             \   'csh': ['shell'],
@@ -177,33 +238,13 @@ hi! clear SpellRare
 hi! SpellBad gui=undercurl guisp=red
 hi! SpellCap gui=undercurl guisp=blue
 hi! SpellRare gui=undercurl guisp=magenta
+" ########### ale END ###########
 
-""set foldmethod=indent
-""set nofoldenable
-
-" shortcut
-nnoremap <F3> <C-W>w
-set pastetoggle=<F4>
-inoremap <M-j> <Down>
-inoremap <M-k> <Up>
-inoremap <M-h> <left>
-inoremap <M-l> <Right>
-nnoremap <F6> :TagbarToggle<CR>
-nnoremap <S-tab> :bn<CR>
-nnoremap m ]c
-nnoremap <S-m> [c
-nnoremap <C-j> <C-w>j
-nnoremap <C-h> <C-w>h
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-highlight Pmenu ctermbg=darkgrey ctermfg=black
-highlight PmenuSel ctermbg=lightgrey ctermfg=black
-
-" tabnine
+" ########### tabnine BEGIN ###########
 "set rtp+=~/.tabnine-vim/
+" ########### tabnine END ###########
 
-" rainbow ###########################
+" ########### rainbow BEGIN ###########
 let g:rainbow_active = 1
 let g:rainbow_conf = {
             \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -228,8 +269,9 @@ let g:rainbow_conf = {
             \	}
             \}
 
+" ########### rainbow BEGIN ###########
 
-"" coc-nim ################################################
+" ########### COC BEGIN ###########
 "" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 "" unicode characters in the file autoload/float.vim
 set encoding=utf-8
@@ -398,3 +440,149 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " Open file list
 nnoremap <silent><nowait> <space>f  :<C-u>CocList files<CR>
 
+" ########### COC END ###########
+
+" ########### lightline BEGIN ###########
+set noshowmode " 不在底部显示命令or插入模式
+set showtabline=2
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'cocstatus', 'gitbranch' ],
+      \             [ 'happy' ]
+      \             ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] 
+      \             ]
+      \ },
+      \ 'component': {
+      \   'happy': 'Be Happy☆',
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'gitbranch': 'LightlineFugitive',
+      \   'filename': 'LightlineFilename',
+      \   'fileformat': 'LightlineFileformat',
+      \   'filetype': 'LightlineFiletype',
+      \   'fileencoding': 'LightlineFileencoding',
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ },
+      \ 'separator': { 'left': "\ue0b8", 'right': "\ue0ba"},
+      \ 'subseparator': { 'left': "\ue0b9", 'right': "\ue0bb"}
+\ }
+
+function! LightlineModified()
+    return &ft =~# 'help\|vimfiler' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+function! LightlineReadonly()
+    return &ft !~? 'help\|vimfiler' && &readonly ? 'RO' : ''
+endfunction
+function! LightlineFilename()
+    return (LightlineReadonly() !=# '' ? LightlineReadonly() . ' ' : '') .
+                \ (&ft ==# 'vimfiler' ? vimfiler#get_status_string() :
+                \  &ft ==# 'unite' ? unite#get_status_string() :
+                \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]') .
+                \ (LightlineModified() !=# '' ? ' ' . LightlineModified() : '')
+endfunction
+function! LightlineFugitive()
+    if exists('*FugitiveHead')
+        return FugitiveHead()
+    endif
+    return ''
+endfunction
+function! LightlineFileformat()
+    return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+    return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+let g:lightline#bufferline#show_number=2
+
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+" ########### lightline END ###########
+
+" ########### nvim-treesitter BEGIN ###########
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+    custom_captures = {
+      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+      ["foo.bar"] = "Identifier",
+    },
+
+  },
+
+  indent = {
+    enable = true
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+  }
+}
+EOF
+" ########### nvim-treesitter END ###########
+
+" ########### vim-easy-align BEGIN ###########
+let g:easy_align_ignore_groups = ['Comment', 'String']
+" ########### vim-easy-align END ###########
+
+" ########### vim-floaterm BEGIN ###########
+let g:floaterm_position='center'
+let g:floaterm_width=0.8
+let g:floaterm_height=0.6
+let g:floaterm_rootmarkers=['.project', '.git', '.hg', '.svn', '.root', '.gitignore']
+" let g:floaterm_autoinsert=v:false
+
+nnoremap <silent> <F7> :FloatermNew<cr>
+nnoremap <silent> <F8> :FloatermToggle<cr>
+
+tnoremap <silent> <F7> <c-\><c-n>:FloatermNew<cr>
+tnoremap <silent> <F8> <c-\><c-n>:FloatermToggle<cr>
+
+augroup floaterm_group
+    autocmd!
+    au FileType floaterm tnoremap <buffer> <silent> <M-h> <c-\><c-n>:FloatermPrev<CR>
+    au FIleType floaterm tnoremap <buffer> <silent> <M-l> <c-\><c-n>:FloatermNext<CR>
+augroup END
+" Set floaterm window's background to black "guibg
+" hi Floaterm ctermbg=black
+" Set floating window border line color to cyan, and background to orange
+hi FloatermBorder ctermbg=Yellow ctermfg=red
+" ########### vim-floaterm END ###########
+
+" ########### 修改补全框颜色 BEGIN ###########
+highlight Pmenu ctermbg=darkgrey ctermfg=black
+highlight PmenuSel ctermbg=lightgrey ctermfg=black
+" ########### 修改补全框颜色 END ###########
