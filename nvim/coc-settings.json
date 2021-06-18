@@ -1,4 +1,4 @@
-
 {
-    "list.source.files.defaultOptions": ["--number-select"]
+    "list.source.files.defaultOptions": ["--number-select"],
+    "list.source.outline.defaultOptions": ["--number-select"]
 }
