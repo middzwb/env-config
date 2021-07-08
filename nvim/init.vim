@@ -28,7 +28,10 @@ Plug 'mg979/vim-visual-multi'
 Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', '<Plug>(EasyAlign)']}
 " 悬浮终端
 Plug 'voldikss/vim-floaterm', {'on': ['FloatermNew', 'FloatermToggle']}
+" 快速移动
+Plug 'easymotion/vim-easymotion'
 
+" 语法高亮
 if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     " text object
@@ -591,6 +594,10 @@ augroup END
 " Set floating window border line color to cyan, and background to orange
 hi FloatermBorder ctermbg=Yellow ctermfg=red
 " ########### vim-floaterm END ###########
+
+" ########### vim-easymotion BEGIN ###########
+map s <Plug>(easymotion-prefix)
+" ########### vim-easymotion END ###########
 
 " ########### 修改补全框颜色 BEGIN ###########
 highlight Pmenu ctermbg=darkgrey ctermfg=black
