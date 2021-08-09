@@ -1,12 +1,17 @@
-# config
+- [install vimrc and tmux.conf](#install-vimrc-and-tmuxconf)
+  - [Error 443](#error-443)
+- [oh-my-zsh](#oh-my-zsh)
+  - [plugin](#plugin)
+- [tmux](#tmux)
+  - [plugin](#plugin-1)
 
-## install vimrc tmux.conf
+## install vimrc and tmux.conf
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/middzwb/my-config/master/install.sh)" -s -to
 ```
 
-#### Error 443
+### Error 443
 
 [github520](https://github.com/521xueweihan/GitHub520)
 
