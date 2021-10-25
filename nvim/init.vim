@@ -78,7 +78,7 @@ set rnu
 augroup relative_number
   autocmd!
   autocmd InsertEnter * :set nornu
-  autocmd InsertLeave * :set nu
+  autocmd InsertLeave * :set rnu
 augroup END
 set guifont=DejaVu_Sans_Mono:h12:cANSI   " 设置字体
 set laststatus=2    " 启动显示状态行(1),总是显示状态行(2)
