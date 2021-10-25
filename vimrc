@@ -1,3 +1,5 @@
+" DEPRECATED  See nvim/init.vim
+
 call plug#begin('~/.vim/plugged')
 "Plug 'inkarkat/vim-mark'
 Plug 'vim-airline/vim-airline'
