@@ -31,7 +31,7 @@ Plug 'voldikss/vim-floaterm', {'on': ['FloatermNew', 'FloatermToggle']}
 " 快速移动
 Plug 'easymotion/vim-easymotion'
 " theme
-Plugin 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 
 " 语法高亮
 if has('nvim')
