@@ -30,6 +30,8 @@ Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', '<Plug>(EasyAlign)']}
 Plug 'voldikss/vim-floaterm', {'on': ['FloatermNew', 'FloatermToggle']}
 " 快速移动
 Plug 'easymotion/vim-easymotion'
+" theme
+Plugin 'morhetz/gruvbox'
 
 " 语法高亮
 if has('nvim')
@@ -72,6 +74,12 @@ call plug#end()
 syntax enable
 syntax on
 set nu
+set rnu
+augroup relative_number
+  autocmd!
+  autocmd InsertEnter * :set nornu
+  autocmd InsertLeave * :set nu
+augroup END
 set guifont=DejaVu_Sans_Mono:h12:cANSI   " 设置字体
 set laststatus=2    " 启动显示状态行(1),总是显示状态行(2)
 set nocompatible
@@ -123,7 +131,7 @@ set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离
 
 set t_Co=256
 set cc=120
-colorscheme desert
+autocmd vimenter * ++nested colorscheme gruvbox
 hi Search term=standout ctermfg=0 ctermbg=3 guifg=Black guibg=Yellow
 
 ""set foldmethod=indent
@@ -598,6 +606,10 @@ hi FloatermBorder ctermbg=Yellow ctermfg=red
 " ########### vim-easymotion BEGIN ###########
 map s <Plug>(easymotion-prefix)
 " ########### vim-easymotion END ###########
+
+" ########### Leaderf BEGIN ###########
+nnoremap <space>p :Leaderf bufTag<CR>
+" ########### Leaderf END ###########
 
 " ########### 修改补全框颜色 BEGIN ###########
 highlight Pmenu ctermbg=darkgrey ctermfg=black
