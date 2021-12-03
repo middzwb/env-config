@@ -39,6 +39,21 @@ vim /etc/shells // add zsh to shells
 
 ## tmux
 
+**编译安装**
+
+```bash
+./configure
+make
+make install
+// 出现libevent_core-2.1.so.7 找不到：在/lib64下做软链接
+```
+
+**无法显示unicode字符**
+
+tmux -u
+
+alias tmux="tmux -u"
+
 ### plugin
 
 ```bash
