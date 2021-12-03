@@ -21,6 +21,14 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/middzwb/my-config/master/i
 
 ## oh-my-zsh
 
+**zsh编译安装**
+
+```bash
+./configure
+make && make install
+vim /etc/shells // add zsh to shells
+```
+
 [oh my zsh](https://ohmyz.sh/)
 
 [powerlevel10k theme](https://github.com/romkatv/powerlevel10k)
