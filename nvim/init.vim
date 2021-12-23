@@ -132,6 +132,7 @@ set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离
 set t_Co=256
 set cc=120
 autocmd vimenter * ++nested colorscheme gruvbox
+set background=dark
 hi Search term=standout ctermfg=0 ctermbg=3 guifg=Black guibg=Yellow
 
 ""set foldmethod=indent
