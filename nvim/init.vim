@@ -609,7 +609,10 @@ map s <Plug>(easymotion-prefix)
 " ########### vim-easymotion END ###########
 
 " ########### Leaderf BEGIN ###########
-nnoremap <space>p :Leaderf bufTag<CR>
+nnoremap <space>p :Leaderf function<CR>
+nnoremap <space>f :Leaderf file<CR>
+nnoremap <space>o :Leaderf bufTag<CR>
+nnoremap <space>b :Leaderf buffer<CR>
 " ########### Leaderf END ###########
 
 " ########### 修改补全框颜色 BEGIN ###########
