@@ -615,6 +615,44 @@ nnoremap <space>o :Leaderf bufTag<CR>
 nnoremap <space>b :Leaderf buffer<CR>
 " ########### Leaderf END ###########
 
+" ########### vim-auto-popmenu BEGIN ###########
+" 设定需要生效的文件类型，如果是 "*" 的话，代表所有类型
+" let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1}
+let g:apc_enable_ft = {'*':1}
+
+" 设定从字典文件以及当前打开的文件里收集补全单词，详情看 ':help cpt'
+set cpt=.,k,w,b
+
+" 不要自动选中第一个选项。
+set completeopt=menu,menuone,noselect
+
+" 禁止在下方显示一些啰嗦的提示
+set shortmess+=c
+" ########### vim-auto-popmenu END ##########
+
+" ########### vim-dict BEGIN ###########
+let g:vim_dict_dict = [
+    \ '~/.vim/dict',
+    \ '~/.config/nvim/dict',
+    \ ]
+" ########### vim-dict END ###########
+
+" ########### Doxygen BEGIN ###########
+" let g:DoxygenToolkit_briefTag_pre="@  "
+"let g:DoxygenToolkit_paramTag_pre="@Param "
+"let g:DoxygenToolkit_returnTag="@Returns   "
+"let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
+"let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
+let g:DoxygenToolkit_authorName="z26883"
+"let g:DoxygenToolkit_licenseTag="My own license"   <-- !!! Does not end with "\<enter>"
+" ########### Doxygen END ###########
+
+" ########### vim-interestingwords BEGIN ###########
+let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
+let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
+" let g:interestingWordsRandomiseColors = 1
+" ########### vim-interestingwords END ###########
+
 " ########### 修改补全框颜色 BEGIN ###########
 highlight Pmenu ctermbg=darkgrey ctermfg=black
 highlight PmenuSel ctermbg=lightgrey ctermfg=black
