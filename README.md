@@ -31,6 +31,8 @@ vim /etc/shells // add zsh to shells
 
 [oh my zsh](https://ohmyz.sh/)
 
+*注：如果没有`chsh`命令，可通过修改/etc/passwd中用户的默认登录shell完成*
+
 [powerlevel10k theme](https://github.com/romkatv/powerlevel10k)
 
 ### plugin
